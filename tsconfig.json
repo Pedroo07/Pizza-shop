@@ -30,7 +30,7 @@
   },
   "include": [
     "src"
-  ],
+, ".prettierrc"  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

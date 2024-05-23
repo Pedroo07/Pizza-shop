@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Link } from "react-router-dom"
 import { Helmet } from "react-helmet-async"
 import { useForm } from "react-hook-form"
 import { toast } from 'sonner'
@@ -26,13 +27,18 @@ export const SignIn = () => {
         }
       })
     }
-    catch{
+    catch {
       toast.error('Credenciais  inválidas.')
     }
 
   }
   return (
     <div className="p-8 ">
+      <Button variant="ghost" asChild className="absolute right-8 top-8">
+        <Link to={"/sign-up"}>
+          Cadastre-se Agora
+        </Link>
+      </Button>
       <Helmet title="Login" />
       <div className="w-[350px] flex flex-col justify-center gap-6">
         <div className="flex flex-col gap-2 text-center">

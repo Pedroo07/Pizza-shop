@@ -5,6 +5,7 @@ import { HelmetProvider, Helmet } from "react-helmet-async"
 
 
 export const App = () => {
+  
   return (
     <HelmetProvider>
       <Helmet titleTemplate="%s | Pizza.shop" />

@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from 'sonner'
 import z from "zod"
+
 const signUpForm = z.object({
   restaurantName: z.string(),
   ManagerName: z.string(),
@@ -14,6 +15,7 @@ const signUpForm = z.object({
 })
 
 type SignUpForm = z.infer<typeof signUpForm>
+
 export const SignUp = () => {
   const navigate = useNavigate()
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<SignUpForm>()

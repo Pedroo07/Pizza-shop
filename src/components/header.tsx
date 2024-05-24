@@ -1,6 +1,8 @@
 import { Home, Pizza, UtensilsCrossed } from "lucide-react"
 import { Separator } from "./ui/separator"
 import { NavLink } from "./nav-link"
+import { ThemeButton } from "./theme/theme-button"
+import { AccountMenu } from "./account-menu"
 
 export const Header = () => {
     return (
@@ -20,6 +22,10 @@ export const Header = () => {
                         Pedidos
                     </NavLink>
                 </nav>
+                <div className="ml-auto gap-2 flex items-center">
+                    <ThemeButton />
+                    <AccountMenu/>
+                </div>
             </div>
         </div>
     )

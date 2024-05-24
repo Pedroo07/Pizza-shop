@@ -11,7 +11,7 @@ export const DayOrdersAmouthCard = () => {
             <CardContent className="space-y-1">
                 <span className="text-2xl font-bold tracking-tight">21</span>
                 <p className="text-xs text-muted-foreground">
-                    <span className="text-rose-500 dark:text-rose-400">-10%</span> Em relação ao mês passado
+                    <span className="text-rose-500 dark:text-rose-400">-10%</span> Em relação a ontem
                 </p>
             </CardContent>
         </Card>

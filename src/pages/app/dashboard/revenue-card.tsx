@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { ResponsiveContainer, LineChart, YAxis, XAxis, Line } from 'recharts'
+import { ResponsiveContainer, LineChart, YAxis, XAxis, Line, CartesianGrid } from 'recharts'
 import colors from "tailwindcss/colors"
-export const RevenueCard = () => {
+export const RevenueChart = () => {
     const data = [
         { date: '10/05', revenue: 250 },
         { date: '11/05', revenue: 600 },
@@ -37,7 +37,8 @@ export const RevenueCard = () => {
                                 })
                             }
                         />
-                        <Line type='linear' strokeWidth={2} dataKey="revenue" stroke={colors.violet[500]}/>
+                        <CartesianGrid vertical={false} className='stroke-muted' />
+                        <Line type='linear' strokeWidth={2} dataKey="revenue" stroke={colors.violet[500]} />
                     </LineChart>
                 </ResponsiveContainer>
             </CardContent>

@@ -6,19 +6,24 @@ import { Helmet } from "react-helmet-async"
 import { useForm } from "react-hook-form"
 import { toast } from 'sonner'
 import z from "zod"
+import { useMutation } from "@tanstack/react-query"
+import { sigIn } from "@/api/sign-in"
 const SignInForm = z.object({
   email: z.string().email()
 })
 
 type SignInForm = z.infer<typeof SignInForm>
+
 export const SignIn = () => {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<SignInForm>()
 
+  const { mutateAsync: autheticate } = useMutation({
+    mutationFn: sigIn
+  })
+
   async function handleSignIn(data: SignInForm) {
     try {
-      console.log(data)
-
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      await autheticate({ email: data.email })
 
       toast.success('Enviamos um link  de autenticação para seu email.', {
         action: {

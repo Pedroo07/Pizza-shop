@@ -1,9 +1,7 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
-import { Search, ArrowRight, X } from "lucide-react"
+import { Table, TableHeader, TableRow, TableHead, TableBody } from "@/components/ui/table"
 import { Helmet } from "react-helmet-async"
-import { array } from "zod"
+import { OrderTableRow } from "./order-table-row"
+import { OrderTableFilter } from "./order-table-filters"
 
 export const Orders = () => {
     return (
@@ -13,10 +11,7 @@ export const Orders = () => {
                 <h1 className="text-3xl font-bold tracking-tight">Pedidos</h1>
             </div>
             <div className="space-y-2.5">
-                <form className="flex items-center gap-2">
-                    <span>Filtros:</span>
-                    <Input placeholder="Nome do cliente" className="h-8 w-[320px]" />
-                </form>
+                <OrderTableFilter/>
                 <div className="border rounded-md">
                     <Table>
                         <TableHeader>
@@ -32,41 +27,9 @@ export const Orders = () => {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {Array.from({ length: 5 }).map((_, i) => {
+                            {Array.from({ length: 5 }).map(() => {
                                 return (
-                                    <TableRow key={i}>
-                                        <TableCell>
-                                            <Button variant="outline" size="xs">
-                                                <Search className="h-3 w-3" />
-                                                <span className="sr-only">Detalhes do pedido</span>
-                                            </Button>
-                                        </TableCell>
-                                        <TableCell className="font-mono text-xs font-medium">
-                                            73tdsa32be92
-                                        </TableCell>
-                                        <TableCell className="text-muted-foreground">
-                                            há 15 minutos
-                                        </TableCell>
-                                        <TableCell className="font-medium">
-                                            Pedroo Henrique de Sousa
-                                        </TableCell>
-                                        <TableCell className="font-medium">
-                                            R$ 149,90
-                                        </TableCell>
-                                        <TableCell>
-                                            <Button variant="outline" size="xs">
-                                                <ArrowRight className="mr-2 h-3 w-3" />
-                                                Aprovar
-                                            </Button>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Button variant="ghost" size="xs">
-                                                <X className="mr-2 h-3 w-3" />
-                                                Cancelar
-                                            </Button>
-                                        </TableCell>
-                                        <TableCell></TableCell>
-                                    </TableRow>
+                                    <OrderTableRow/>
                                 )
                             })}
                         </TableBody>

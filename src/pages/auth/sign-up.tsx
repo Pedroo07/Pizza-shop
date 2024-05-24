@@ -1,6 +1,8 @@
+import { signUp } from "@/api/resgister"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useMutation } from "@tanstack/react-query"
 import { Helmet } from "react-helmet-async"
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom"
@@ -20,12 +22,22 @@ export const SignUp = () => {
   const navigate = useNavigate()
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<SignUpForm>()
 
+  const { mutateAsync: restaurants } = useMutation({
+    mutationFn: signUp
+  })
+
   async function handleSignUp(data: SignUpForm) {
     try {
+      await restaurants({
+        restaurantName: data.restaurantName,
+        email: data.email,
+        phone: data.phone,
+        managerName: data.ManagerName
+      })
       toast.success('Restaurante cadastrado com sucesso!', {
         action: {
           label: 'Login',
-          onClick: () => navigate('/sign-in'),
+          onClick: () => navigate(`/sign-in?email=${data.email}`),
         }
       })
       console.log(data)
@@ -69,7 +81,7 @@ export const SignUp = () => {
             <Input id="phone" type="tel" {...register('phone')} />
           </div>
           <Button disabled={isSubmitting} className="w-full" type="submit">Finalizar cadastro</Button>
-          <p  className="px-6 text-center text-ssm leading-relaxed text-muted-foreground">Ao continuar você concorda com os <a href=""  className="underline underline-offset-4 ">termos de política e privacidade</a></p>
+          <p className="px-6 text-center text-ssm leading-relaxed text-muted-foreground">Ao continuar você concorda com os <a href="" className="underline underline-offset-4 ">termos de política e privacidade</a></p>
         </form>
       </div>
     </div>

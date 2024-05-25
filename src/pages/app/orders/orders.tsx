@@ -5,14 +5,25 @@ import { OrderTableFilter } from "./order-table-filters"
 import { Pagination } from "@/components/pagination"
 import { useQuery } from "@tanstack/react-query"
 import { getOrders } from "@/api/get-orders"
-
-
+import { useSearchParams } from "react-router-dom"
+import { z } from "zod"
 
 export const Orders = () => {
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const pageIndex = z.coerce.number().transform(page => page - 1).parse(searchParams.get('page') ?? 0)
+
     const { data: results } = useQuery({
-        queryKey: ['orders'],
-        queryFn: getOrders
+        queryKey: ['orders', pageIndex],
+        queryFn: () => getOrders({ pageIndex })
     })
+    const handlePage = (pageIndex: number) => {
+        setSearchParams((state) => {
+            state.set('page',( pageIndex + 1).toString())
+            return state
+        })
+        
+    }
     return (
         <div>
             <Helmet title="Pedidos" />
@@ -36,12 +47,15 @@ export const Orders = () => {
                             </TableHeader>
                             <TableBody>
                                 {results && results.orders.map(order => {
-                                    return <OrderTableRow key={order.orderId} order={order}/>
+                                    return <OrderTableRow key={order.orderId} order={order} />
                                 })}
                             </TableBody>
                         </Table>
                     </div>
-                    <Pagination pageIndex={0} totalCount={105} perPage={10} />
+                    {results && (
+                        <Pagination onPageChange={handlePage} pageIndex={results.meta.pageIndex} totalCount={results.meta.totalCount} perPage={results.meta.perPage} />
+                    )}
+
                 </div>
             </div>
         </div>

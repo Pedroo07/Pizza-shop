@@ -90,10 +90,10 @@ export const OrderDetails = ({ orderId, open }: OrderDetailsProps) => {
             <TableFooter>
               <TableRow>
                 <TableCell colSpan={3}>Total do Pedido</TableCell>
-                <TableCell className="text-right font-medium">{(order.totalInCents  / 100).toLocaleString('pt-Br', {
-                      style: 'currency',
-                      currency: 'BRL'
-                    })}</TableCell>
+                <TableCell className="text-right font-medium">{(order.totalInCents / 100).toLocaleString('pt-Br', {
+                  style: 'currency',
+                  currency: 'BRL'
+                })}</TableCell>
               </TableRow>
             </TableFooter>
           </Table>

@@ -4,12 +4,6 @@ import { useQuery } from '@tanstack/react-query'
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
 import colors from "tailwindcss/colors"
 
-const data = [
-    { product: 'Mussarela', amount: 34 },
-    { product: 'A moda', amount: 65 },
-    { product: 'Frango', amount: 18 },
-    { product: 'Pepperoni', amount: 9 },
-]
 const COLORS = [
     colors.violet[500],
     colors.rose[500],

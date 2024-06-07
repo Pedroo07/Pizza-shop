@@ -51,7 +51,7 @@ export const Orders = () => {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {IsLoandingOrders && <OrderTableSkeleton/>}
+                                {IsLoandingOrders && <OrderTableSkeleton />}
                                 {results && results.orders.map(order => {
                                     return <OrderTableRow key={order.orderId} order={order} />
                                 })}

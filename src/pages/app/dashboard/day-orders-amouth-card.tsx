@@ -20,18 +20,18 @@ export const DayOrdersAmouthCard = () => {
                     <>
                         <span className="text-2xl font-bold tracking-tight">{dayOrdersAmount.amount.toLocaleString('pt-BR')}</span>
                         <p className="text-xs text-muted-foreground">
-                           {dayOrdersAmount.diffFromYesterday >= 0 ? (
-                            <>
-                             <span className="text-emerald-500 dark:text-emerald-400">+{dayOrdersAmount.diffFromYesterday}%</span>{''} Em relação a ontem
-                            </>
-                           ) : (
-                            <>
-                            <span className="text-rose-500 dark:text-rose-400">{dayOrdersAmount.diffFromYesterday}%</span>{''} Em relação a ontem
-                            </>
-                           )}
-                           </p>
+                            {dayOrdersAmount.diffFromYesterday >= 0 ? (
+                                <>
+                                    <span className="text-emerald-500 dark:text-emerald-400">+{dayOrdersAmount.diffFromYesterday}%</span>{''} Em relação a ontem
+                                </>
+                            ) : (
+                                <>
+                                    <span className="text-rose-500 dark:text-rose-400">{dayOrdersAmount.diffFromYesterday}%</span>{''} Em relação a ontem
+                                </>
+                            )}
+                        </p>
                     </>
-                ): <MetricCardSkeleton/> }
+                ) : <MetricCardSkeleton />}
 
             </CardContent>
         </Card>

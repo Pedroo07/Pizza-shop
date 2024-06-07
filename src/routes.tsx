@@ -11,15 +11,15 @@ import { Error } from "./pages/Error"
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <AppLayout/>,
-    errorElement: <Error/>,
+    element: <AppLayout />,
+    errorElement: <Error />,
     children: [
       { path: '/', element: <Dashboard /> },
       { path: '/orders', element: <Orders /> }
     ]
   },
-  { path: '/sign-in', element: <AuthLayout/>, children: [{ path: '/sign-in', element: <SignIn /> }] },
-  { path: '/sign-up', element: <AuthLayout/>, children: [{ path: '/sign-up', element: <SignUp /> }] },
-  {path: '*', element: <NotFound/>}
-  
+  { path: '/sign-in', element: <AuthLayout />, children: [{ path: '/sign-in', element: <SignIn /> }] },
+  { path: '/sign-up', element: <AuthLayout />, children: [{ path: '/sign-up', element: <SignUp /> }] },
+  { path: '*', element: <NotFound /> }
+
 ])

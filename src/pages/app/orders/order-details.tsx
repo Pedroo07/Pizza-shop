@@ -99,8 +99,8 @@ export const OrderDetails = ({ orderId, open }: OrderDetailsProps) => {
             </TableFooter>
           </Table>
         </div>
-      ): (
-        <OrderDetailsSkeleton/>
+      ) : (
+        <OrderDetailsSkeleton />
       )}
     </DialogContent>
   )
